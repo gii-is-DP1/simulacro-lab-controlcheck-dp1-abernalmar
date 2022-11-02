@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ProductService {
@@ -32,15 +33,22 @@ public class ProductService {
     	return p;
     }
     //
-
-    public Product save(Product p){
-        return null;       
-    }
     
+    //Ej 10
+
+    //Todos los métodos que sean de crear, borrar, editar y guardar necesitan el Transactional
+    @Transactional
+    public Product save(Product p){
+        return productRepo.save(p);       
+    }
+    //
+    
+    //Ej 9
     public List<ProductType> findAllProductTypes(){
     	List<ProductType> p = productRepo.findAllProductTypes();
     	return p;
     }
+    //
 
     
 }
